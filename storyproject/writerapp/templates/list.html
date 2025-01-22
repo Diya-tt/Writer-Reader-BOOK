@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>All YOUR STORY</title>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .row-cols-md-3 .col {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card-group {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .card {
+            width: 25rem;
+            height: 100%;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h2 {
+            color: #343a40;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-light {
+            background-color: #e0e0e0;
+            color: black;
+            border: none;
+        }
+
+        .btn-light:hover {
+            background-color: #c0c0c0;
+        }
+
+        .btn-primary {
+            background-color: #2575fc;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #1a57d1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container ">
+        <h2 class="text-center justify-content-center align-items-center d-flex flex-column" style="margin-top: 150px;">All YOUR STORY</h2>
+        <div class="  row row-cols-1 row-cols-md-3 g-5">
+            {% for sample in samples %}
+            <div class="col">
+                <div class="card-group uniform-card">
+                    <div class="card">
+                        <img src="{{sample.image.url}}" class="card-img-top" alt="Image of {{ sample.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">Title: {{ sample.title }}</h5>
+                            <p class="card-text">Date: {{ sample.date }}</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'delete_view' sample.id %}" class="btn btn-light">
+                                    <i class="fa-solid fa-trash" style="color: black;"></i>
+                                </a>
+                                <a href="{% url 'story_detail' sample.id %}" class="btn btn-primary">Detail View</a>
+                                <a href="{% url 'home_view' %}" class="btn btn-primary">Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

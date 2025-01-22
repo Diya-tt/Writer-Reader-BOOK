@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Hello, listworld!</title>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #b3db21, #13ca50); /* Gradient from Bootstrap 'info' and 'yellow' */
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card {
+            height: 100%;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .uniform-card .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="mb-4 mt-5 text-center">HERE IS YOUR STORY </h2>
+
+    <div class="container mt-5">
+        <div class="  row row-cols-1 row-cols-md-3 g-4">
+            {% for sample in stories %}
+            <div class="col">
+                <div class="card-group uniform-card">
+                    <div class="card">
+                        <img src="{{sample.image.url}}" class="card-img-top" alt="Vehicle Image">
+                        <div class="card-body">
+                            <h5 class="card-title">STORY NAME : {{sample.title}}</h5>
+                            
+                            <a href="{% url 'home1_view' %}" class="btn btn-primary">Back</a>
+                            <a href="{% url 'viewer_view' sample.id  %}" class="btn btn-danger">Detail View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+
+</html>

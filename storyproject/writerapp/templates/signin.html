@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+
+    <title>Hello, world!</title>
+  </head>
+  
+  <body style="background-image:url('static/assets/img/sigin.jpg'); background-size:cover; border-radius: 20px;">
+    <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 85px;">
+        <div class="shadow border p-5 w-50 mt-5" style="background-color: white;">
+            {% if messages %}
+            {% for i in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+            {% endif %}
+            
+            <form action="" method="post">
+              <!-- Center the heading -->
+              <h1 class="text-center">
+                <a href="#" 
+                  style="color: #1d10ae; text-decoration: none; font-size: 2rem;">
+                   SIGNIN
+               </a>
+              </h1>
+                {% csrf_token %}
+                {{form}}
+                <br>
+                <div class="justify-content-between d-flex">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <a href="{% url 'signup_view' %}" style="color: #091853;">New user ? SignUp</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

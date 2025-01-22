@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Comments for Book</h1>
+
+        <!-- Display Book Title -->
+        {% if book %}
+        <h2 class="mt-4">Book: {{ book.title }}</h2>
+        <p>{{ book.description }}</p>
+        {% endif %}
+
+        <hr>
+
+        <!-- Display Comments -->
+        <h3>Comments:</h3>
+        {% if comments %}
+        <ul class="list-group">
+            {% for comment in comments %}
+            <li class="list-group-item">
+                <strong>{{ comment.user.username }}</strong>: {{ comment.comment }}
+                <br>
+                <small>Posted on {{ comment.created_at }}</small>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No comments available for this book yet.</p>
+        {% endif %}
+
+        <!-- Back to Book Details -->
+        {% if book %}
+        <a href="{% url 'book_detail' book.id %}" class="btn btn-primary mt-4">Back to Book</a>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

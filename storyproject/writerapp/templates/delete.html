@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+
+    <title>Hello, dejeteworld!</title>
+
+    <style>
+      body {
+        background-color: #f4f6f9;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .form-container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .form-container p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .btn-danger {
+        margin-right: 0.5rem;
+      }
+
+      a.btn-primary {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        {{ form }}
+        <input class="btn btn-danger" type="submit" value="Confirm" />
+        <a href="{% url 'list_view' %}" class="btn btn-primary">Cancel</a>
+      </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
